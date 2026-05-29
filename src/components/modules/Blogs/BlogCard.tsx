@@ -8,7 +8,7 @@ export default function BlogCard({ post }: { post: any }) {
       href={`/blogs/${post.id}`}
       className="block group transform hover:-translate-y-1 transition-transform duration-300"
     >
-      <div className="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+      <div className="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
         {post.thumbnail ? (
           <div className="relative h-56 w-full overflow-hidden">
             <Image
