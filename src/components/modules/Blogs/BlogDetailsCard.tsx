@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import Image from "next/image";
 
 export default async function BlogDetailsCard({ blog }: { blog: any }) {
@@ -10,8 +9,6 @@ export default async function BlogDetailsCard({ blog }: { blog: any }) {
 
   return (
     <main className="max-w-4xl mx-auto py-30 px-4">
-      <h1 className="text-5xl font-bold mb-6">{blog?.title}</h1>
-
       <div className="flex items-center gap-4 mb-8">
         <Image
           src={
@@ -23,6 +20,7 @@ export default async function BlogDetailsCard({ blog }: { blog: any }) {
           height={48}
           className="rounded-full"
         />
+        
         <div>
           <p className="font-semibold">
             {blog.author.name}{" "}
@@ -35,7 +33,7 @@ export default async function BlogDetailsCard({ blog }: { blog: any }) {
           </p>
         </div>
       </div>
-
+  <h1 className="text-5xl font-bold mb-8">{blog?.title}</h1>
       {blog.thumbnail && (
         <div className="relative h-80 w-full overflow-hidden">
           <Image
@@ -46,10 +44,7 @@ export default async function BlogDetailsCard({ blog }: { blog: any }) {
           />
         </div>
       )}
-
-      <article className="prose prose-lg max-w-none">
-        <p>{blog.content}</p>
-      </article>
+      <p className="mt-6">{blog.content}</p>
     </main>
   );
 }
