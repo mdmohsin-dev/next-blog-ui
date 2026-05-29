@@ -3,7 +3,7 @@ import Link from "next/link";
 export default async function Hero() {
   return (
     <div>
-      <div className="max-h-screen w-full relative">
+      <div className="min-h-screen flex justify-center items-center w-full relative">
         {/* Crimson Depth */}
         <div
           className="absolute inset-0 z-0"
