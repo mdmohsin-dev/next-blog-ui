@@ -4,7 +4,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative w-full overflow-hidden pt-12 pb-10 ">
+    <footer className="relative w-full py-12">
       {/* Background Layer */}
       <div
         className="absolute inset-0 z-0"
