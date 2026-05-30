@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from "next/link";
 import Image from "next/image";
 
@@ -6,11 +5,11 @@ export default function BlogCard({ post }: { post: any }) {
   return (
     <Link
       href={`/blogs/${post.id}`}
-      className="block group transform hover:-translate-y-1 transition-transform duration-300"
+      className="block group transform hover:-translate-y-1 transition-transform duration-300 h-full"
     >
-      <div className="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+      <div className="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
         {post.thumbnail ? (
-          <div className="relative h-56 w-full overflow-hidden">
+          <div className="relative h-56 w-full overflow-hidden flex-shrink-0">
             <Image
               src={post.thumbnail}
               alt={post.title}
@@ -19,18 +18,18 @@ export default function BlogCard({ post }: { post: any }) {
             />
           </div>
         ) : (
-          <div className="h-56 w-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-500 dark:text-gray-300">
+          <div className="h-56 w-full flex-shrink-0 bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-500 dark:text-gray-300">
             No Image
           </div>
         )}
 
-        <div className="p-6">
+        <div className="p-6 flex flex-col flex-1">
           <h3 className="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">
             {post.title}
           </h3>
 
-          <p className="text-gray-700 dark:text-gray-300 mb-4 line-clamp-3">
-            {post.content}
+          <p className="text-gray-700 dark:text-gray-300 mb-4 line-clamp-3 flex-1">
+            {post.content.slice(0, 80)}...
           </p>
 
           <div className="flex items-center justify-between mb-4">
