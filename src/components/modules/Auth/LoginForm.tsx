@@ -16,7 +16,7 @@ import {
 import Image from "next/image";
 import { signIn } from "next-auth/react";
 import { toast } from "sonner";
-import { login } from "@/actions/auth";
+import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
   const form = useForm<FieldValues>({
@@ -26,18 +26,25 @@ export default function LoginForm() {
     },
   });
 
+  const router = useRouter();
+
   const onSubmit = async (values: FieldValues) => {
     try {
-      const res = await login(values);
-      if (res?.id) {
-        toast.success("User Logged in Successfully");
-      } else {
-        toast.error("User Login Failed");
-      }
-      signIn("credentials", {
+      // const res = await login(values);
+      // if (res?.id) {
+      // } else {
+      //   toast.error("User Login Failed");
+      // }
+      const res = await signIn("credentials", {
         ...values,
-        callbackUrl: "/dashboard",
+        redirect: false,
       });
+      if (res?.error) {
+        toast.error("Invalid email or password");
+      } else {
+        toast.success("User Logged in Successfully");
+        router.push("/dashboard");
+      }
     } catch (err) {
       console.error(err);
     }
@@ -108,22 +115,6 @@ export default function LoginForm() {
         </Form>
         {/* Social Login Buttons */}
         <div className="flex flex-col gap-3 mt-4">
-          <Button
-            variant="outline"
-            className="flex items-center justify-center gap-2"
-            onClick={() => handleSocialLogin("github")}
-          >
-            {/* GitHub */}
-            <Image
-              src="https://img.icons8.com/ios-glyphs/24/github.png"
-              alt="GitHub"
-              className="w-5 h-5"
-              width={20}
-              height={20}
-            />
-            Login with GitHub
-          </Button>
-
           <Button
             variant="outline"
             className="flex items-center justify-center gap-2"

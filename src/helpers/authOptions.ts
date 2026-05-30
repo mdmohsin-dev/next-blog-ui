@@ -27,7 +27,6 @@ export const authOptions: NextAuthOptions = {
     }),
     CredentialsProvider({
       name: "Credentials",
-
       credentials: {
         email: { label: "Email", type: "text" },
         password: { label: "Password", type: "password" },
@@ -77,15 +76,41 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    async jwt({ token, user }) {
-      if (user) {
-        token.id = user?.id;
+    async jwt({ token, user, account }) {
+      if (!account) return token;
+
+      if (account.provider === "credentials") {
+        token.id = user.id;
+        return token;
       }
+
+      if (account.provider === "google") {
+        try {
+          const res = await fetch(
+            `${process.env.NEXT_PUBLIC_BASE_API}/auth/google`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                email: user.email,
+                name: user.name,
+                picture: user.image,
+              }),
+            }
+          );
+          const dbUser = await res.json();
+          token.id = dbUser.id;
+        } catch (err) {
+          console.error("Google sync failed", err);
+        }
+      }
+
       return token;
     },
+
     async session({ session, token }) {
       if (session?.user) {
-        session.user.id = token?.id as string;
+        session.user.id = token.id as string;
       }
       return session;
     },
