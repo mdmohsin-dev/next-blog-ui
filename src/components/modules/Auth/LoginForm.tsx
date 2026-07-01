@@ -51,7 +51,6 @@ export default function LoginForm() {
   };
 
   const handleSocialLogin = (provider: "google" | "github") => {
-    console.log(`Login with ${provider}`);
   };
 
   return (

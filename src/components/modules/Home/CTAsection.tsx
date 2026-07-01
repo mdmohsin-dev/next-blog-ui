@@ -10,7 +10,7 @@ import avatar from "@/assets/rizwan.jpg"
 
 export default function CtaSection() {
   return (
-    <section className="relative overflow-hidden py-16 sm:py-20 lg:py-24 px-6">
+    <section className="relative overflow-hidden py-16 px-6">
       {/* Background: soft gradient + blurred color blobs for light theme */}
       <div className="absolute inset-0 bg-gradient-to-b from-indigo-50 via-white to-white" />
       <motion.div

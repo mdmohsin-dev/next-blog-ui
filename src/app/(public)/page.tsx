@@ -1,6 +1,7 @@
 import BlogCard from "@/components/modules/Blogs/BlogCard";
 import CtaSection from "@/components/modules/Home/CTAsection";
 import Hero from "@/components/modules/Home/Hero";
+import ReviewSlider from "@/components/modules/Home/ReviewSlider";
 import WhyChooseUs from "@/components/modules/Home/WhyChoose";
 
 export default async function HomePage() {
@@ -10,7 +11,6 @@ export default async function HomePage() {
     }
   })
   const { data: blogs } = await res.json()
-  console.log(blogs)
   return (
     <div>
       <Hero />
@@ -22,6 +22,7 @@ export default async function HomePage() {
       </div>
       <WhyChooseUs/>
       <CtaSection/>
+      <ReviewSlider/>
     </div>
   );
 }

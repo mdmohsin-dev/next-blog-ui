@@ -6,7 +6,6 @@ export default async function DashboardHome() {
 
 
   const session = await getServerSession(authOptions);
-  console.log("Session in Dashboard:", session);
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-gray-50 p-6 w-full">
