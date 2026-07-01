@@ -1,5 +1,7 @@
 import BlogCard from "@/components/modules/Blogs/BlogCard";
+import CtaSection from "@/components/modules/Home/CTAsection";
 import Hero from "@/components/modules/Home/Hero";
+import WhyChooseUs from "@/components/modules/Home/WhyChoose";
 
 export default async function HomePage() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/post`, {
@@ -18,6 +20,8 @@ export default async function HomePage() {
           {blogs.slice(0, 3).map((blog: any) => <BlogCard post={blog} key={blog.id}></BlogCard>)}
         </div>
       </div>
+      <WhyChooseUs/>
+      <CtaSection/>
     </div>
   );
 }
