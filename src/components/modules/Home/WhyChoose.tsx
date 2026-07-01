@@ -49,12 +49,14 @@ const features: FeatureCard[] = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="w-full my-36 px-4 sm:px-6 lg:px-8">
+    <section className="w-full lg:my-36 my-20 md:my-24 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         {/* Section Heading */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900">
-            Why Choose Our Blog
+        <div className="text-center md:mb-12 mb-8">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
+            Why Choose <span className="bg-gradient-to-r from-indigo-500 via-pink-500 to-teal-500 bg-clip-text text-transparent">
+                Our Blog
+              </span>
           </h2>
           <p className="mt-3 text-slate-600 max-w-2xl mx-auto text-base sm:text-lg">
             Everything you need to read, write, and grow — all in one place.

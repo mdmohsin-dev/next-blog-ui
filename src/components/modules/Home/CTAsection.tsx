@@ -10,7 +10,7 @@ import avatar from "@/assets/rizwan.jpg"
 
 export default function CtaSection() {
   return (
-    <section className="relative overflow-hidden py-16 px-6">
+    <section className="relative overflow-hidden py-16 px-2 md:px-8">
       {/* Background: soft gradient + blurred color blobs for light theme */}
       <div className="absolute inset-0 bg-gradient-to-b from-indigo-50 via-white to-white" />
       <motion.div
@@ -61,13 +61,13 @@ export default function CtaSection() {
             actually reads, comments, and grows with you.
           </p>
 
-          <div className="mt-10 flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4">
+          <div className="mt-10 flex items-center lg:items-start justify-center lg:justify-start gap-4">
             <Button
               asChild
               size="lg"
               className="rounded-full px-8 bg-slate-900 text-white hover:bg-slate-800"
             >
-              <Link href="/write" className="flex items-center gap-2">
+              <Link href="/dashboard/create-blog" className="flex items-center gap-2">
                 <PenLine className="w-4 h-4" />
                 Start Writing
               </Link>
